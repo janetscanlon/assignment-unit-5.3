@@ -26,6 +26,7 @@ console.log('test for addToCollection function', addToCollection(myCollection, '
 console.log('test for addToCollection function', addToCollection(myCollection, 'Happier Than Ever','Billie Eilish', 2021));
 console.log('test for addToCollection function', addToCollection(myCollection, 'At Last!','Etta James', 1960));
 console.log('test for addToCollection function', addToCollection(myCollection, 'Duke Ellington & John Coltrane','Duke Elington and John Coltrane', 1963));
+console.log('test for addToCollection function', addToCollection(myCollection, 'WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?','Billie Eilish', 2019));
 
 //console.log myCollection array
 console.log(myCollection);
@@ -46,18 +47,43 @@ console.log('Test for the showCollection function!', showCollection(myCollection
 function findByArtist(collection, searchedArtist){
   let results = [];   //SIDE EFFECTS: create a matching array to hold any matching results if any
 
-  //              loop through the collection and add any album objects with a matching artist to the array
+  //loop through the collection and add any album objects with a matching artist to the array
   for (let album of collection){
     if(searchedArtist === album.artist){
       results.push(album);
     }
   }
-
-  return results;
-
-  //OUTPUTS: return the array with the matching results (if no results are found an empty array should be returned)
+  return results;     //OUTPUTS: return the array with the matching results (if no results are found an empty array should be returned)
 
 }
+
+console.log('Test for findByArtist function', findByArtist(myCollection, 'Billie Eilish'));
+
+//STRETCH. Create a function called search that will allow for searching by artist and yearPublished
+function search(collection, searchCriteria){  //INPUTS: collection and searchCriteria
+  //SIDE EFFECTS: create a new array for the match results, 
+  let matchResults = [];
+
+  //loop through each album of the collection, if there is a match for all criteria push into array 
+  for (let album of collection){
+    if(searchCriteria.artist === album.artist && searchCriteria.yearPublished === album.yearPublished){
+      matchResults.push;
+      return matchResults;
+      }else {
+        return collection;
+      }
+    } 
+  }
+
+  //OUTPUTS: return a new array of all items in the collection matching ALL of the search criteria
+  //          if there is no search object or empty search object or missing artist/yearPublished data provided as input 
+  //          return ALL ALBUMS from the collection being searched return collection; 
+
+
+console.log(search(myCollection, { artist: 'Billie Eilish', yearPublished: 2021 } ));
+console.log(search(myCollection, { artist: 'Ray Charles', yearPublished: 1957 } ));
+
+
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
