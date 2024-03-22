@@ -57,31 +57,44 @@ function findByArtist(collection, searchedArtist){
 
 }
 
-console.log('Test for findByArtist function', findByArtist(myCollection, 'Billie Eilish'));
+console.log('Test for findByArtist function, artist is Billie Eilish', findByArtist(myCollection, 'Billie Eilish'));
 
 //STRETCH. Create a function called search that will allow for searching by artist and yearPublished
 function search(collection, searchCriteria){  //INPUTS: collection and searchCriteria
   //SIDE EFFECTS: create a new array for the match results, 
+  if(searchCriteria === undefined || searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
+    return myCollection;
+  }
+  
   let matchResults = [];
 
   //loop through each album of the collection, if there is a match for all criteria push into array 
+
+  
   for (let album of collection){
     if(searchCriteria.artist === album.artist && searchCriteria.yearPublished === album.yearPublished){
-      matchResults.push;
-      return matchResults;
-      }else {
-        return collection;
-      }
+      matchResults.push(album);
     } 
-  }
+  } return matchResults;
+}
 
   //OUTPUTS: return a new array of all items in the collection matching ALL of the search criteria
   //          if there is no search object or empty search object or missing artist/yearPublished data provided as input 
   //          return ALL ALBUMS from the collection being searched return collection; 
 
 
-console.log(search(myCollection, { artist: 'Billie Eilish', yearPublished: 2021 } ));
-console.log(search(myCollection, { artist: 'Ray Charles', yearPublished: 1957 } ));
+
+console.log('This is a test for the search function, the expected result is an array with {artist: billie eilish, yearPublish: 2021', search(myCollection, { artist: 'Billie Eilish', yearPublished: 2021 } ));
+console.log('This is a test for the search function, the expected result is an empty array, searchCriteria: {artist: Ray Charles, yearPublish: 1957', search(myCollection, { artist: 'Ray Charles', yearPublished: 1957 } ));
+
+//no search object
+console.log('This is a test for the edge case with no object provided', search(myCollection));
+
+//empty objects
+console.log('This is a test for the edge case with no object provided', search(myCollection, {}));
+
+//missing property
+console.log('This is a test for the edge case with no object provided', search(myCollection, {artist: 'Billie Eilish'}));
 
 
 
