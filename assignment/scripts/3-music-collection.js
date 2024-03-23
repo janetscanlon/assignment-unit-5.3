@@ -61,26 +61,19 @@ console.log('Test for findByArtist function, artist is Billie Eilish', findByArt
 
 //STRETCH. Create a function called search that will allow for searching by artist and yearPublished
 function search(collection, searchCriteria){  //INPUTS: collection and searchCriteria
-  //SIDE EFFECTS: create a new array for the match results, 
+
   if(searchCriteria === undefined || searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
-    return myCollection;
+    return collection;
   }
   
   let matchResults = [];
-
   //loop through each album of the collection, if there is a match for all criteria push into array 
-
-  
   for (let album of collection){
     if(searchCriteria.artist === album.artist && searchCriteria.yearPublished === album.yearPublished){
       matchResults.push(album);
     } 
   } return matchResults;
 }
-
-  //OUTPUTS: return a new array of all items in the collection matching ALL of the search criteria
-  //          if there is no search object or empty search object or missing artist/yearPublished data provided as input 
-  //          return ALL ALBUMS from the collection being searched return collection; 
 
 
 
@@ -94,7 +87,9 @@ console.log('This is a test for the edge case with no object provided', search(m
 console.log('This is a test for the edge case with no object provided', search(myCollection, {}));
 
 //missing property
-console.log('This is a test for the edge case with no object provided', search(myCollection, {artist: 'Billie Eilish'}));
+//console.log('This is a test for the edge case with no object provided', search(myCollection, {artist: 'Billie Eilish'}));
+console.log('This is a test for the edge case with no object provided', search(myCollection, {yearPublished: 2021}));
+
 
 
 
